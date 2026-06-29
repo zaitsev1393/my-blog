@@ -1,4 +1,8 @@
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+const BASE_URL =
+  process.env.BASE_URL ||
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
 
 function postTemplate({ title, description, image, date, slug, content }) {
   const ogImage = image ? `${BASE_URL}${image}` : `${BASE_URL}/og-default.png`;
@@ -51,13 +55,15 @@ function chapterHTML(name, posts) {
         <div class="chapter open">
           <button class="chapter-name">${label}</button>
           <ul class="subchapter-list">
-            ${posts.map(subchapterHTML).join('')}
+            ${posts.map(subchapterHTML).join("")}
           </ul>
         </div>`;
 }
 
 function indexTemplate(chapters, order) {
-  const chaptersHTML = order.map(name => chapterHTML(name, chapters[name])).join('');
+  const chaptersHTML = order
+    .map((name) => chapterHTML(name, chapters[name]))
+    .join("");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -73,6 +79,8 @@ function indexTemplate(chapters, order) {
   <meta name="twitter:title" content="" />
   <meta name="twitter:description" content="" />
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 <body>
   <div class="layout">

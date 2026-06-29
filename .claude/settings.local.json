@@ -8,7 +8,9 @@
       "Bash(ps *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" -H \"User-Agent: Mozilla/5.0 \\(Macintosh\\)\" http://localhost:3000/posts/tools-i-use)",
       "Bash(curl -s http://localhost:3000/posts/tools-i-use)",
-      "Bash(curl -s -H \"User-Agent: Slackbot-LinkExpanding\" http://localhost:3000/posts/tools-i-use)"
+      "Bash(curl -s -H \"User-Agent: Slackbot-LinkExpanding\" http://localhost:3000/posts/tools-i-use)",
+      "Bash(curl -s -A \"facebookexternalhit/1.1\" https://blogg-cyan.vercel.app/posts/tools-i-use)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(compatible; OpenGraph-Debugger\\)\" https://blogg-cyan.vercel.app/posts/tools-i-use)"
     ]
   }
 }
